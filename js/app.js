@@ -37,7 +37,7 @@ var seattleShop = {
     var ulEl = document.createElement('ul');
     var h2El = document.createElement('h2');
     h2El.textContent = this.storeName;
-    storeSales.appendChild(h2El);
+    seattleShop.appendChild(h2El);
     for (var i = 0; i < hoursArray.length; i++ ) {
       var liEl = document.createElement('li');
       liEl.textContent = `${hoursArray[i]} : ${this.cookiesEachHourArray[i]} Cookies`; 
