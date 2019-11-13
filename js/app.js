@@ -16,12 +16,24 @@ var seattleShop = {
   cookiesEachHourArray:[],
   totalCookiesForTheDay: 0,
 
-  calculateCustomers: customersEachHour() {
-  
+  calculateCustomers: function() {
+    for(var i =0; i < hoursArray.length ; i++) {
+      var randomCustomer = getRandom(this.minCustomersEachHour, this.maxCustomersEachHour);
+      this.customersEachHourArray.push(randomCustomer)
+    }
   }
 
-  randomNumber: function(min, max) {
-    return Math.floor(Math.random() * (max - min)) + min;
+  calculateCookies: function() {
+    for (var i = 0; i < this.customersEachHourArray.length; i++) {
+      var cookies = Math.round(this.customersEachHourArray[i] * this.averageCookiesPerCustomer);
+      this.cookiesEachHourArray.push(cookies);
+    }
+  }
+
+
+
+  function getRandom(min, max) {
+    return Math.floor(Math.random() * (max - min +1)) + min;
   }
 
   render:  function() {
