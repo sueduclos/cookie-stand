@@ -38,6 +38,7 @@ var seattleShop = {
     var ulEl = document.createElement('ul');
     var h2El = document.createElement('h2');
     h2El.textContent = this.storeName;
+    console.log('h2El: ', h2El);
     storeSales.appendChild(h2El);
     console.log(storeSales);
     for (var i = 0; i < hoursArray.length; i++ ) {
