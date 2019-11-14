@@ -1,4 +1,4 @@
-'use strict';
+'use-strict';
 
 //console.log('proof of life');
 //number of cookies at each store at each hour plus totals
@@ -34,18 +34,20 @@ var seattleShop = {
   render: function() {
     this.calculateCustomers();
     this.calculateCookies();
+
     var ulEl = document.createElement('ul');
     var h2El = document.createElement('h2');
     h2El.textContent = this.storeName;
     storeSales.appendChild(h2El);
+    console.log(storeSales);
     for (var i = 0; i < hoursArray.length; i++ ) {
       var liEl = document.createElement('li');
       liEl.textContent = `${hoursArray[i]} : ${this.cookiesEachHourArray[i]} Cookies`;
       ulEl.appendChild(liEl);
     }
-    liEl = document.createElement('li');
     liEl.textContent = `Total: ${this.totalCookiesForTheDay} Cookies`;
     ulEl.appendChild(liEl);
+    liEl = document.createElement('li');
     storeSales.appendChild(ulEl);
   },
 };
