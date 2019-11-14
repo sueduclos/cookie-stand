@@ -37,10 +37,10 @@ var seattleShop = {
     var ulEl = document.createElement('ul');
     var h2El = document.createElement('h2');
     h2El.textContent = this.storeName;
-    seattleShop.appendChild(h2El);
+    storeSales.appendChild(h2El);
     for (var i = 0; i < hoursArray.length; i++ ) {
       var liEl = document.createElement('li');
-      liEl.textContent = `${hoursArray[i]} : ${this.cookiesEachHourArray[i]} Cookies`; 
+      liEl.textContent = `${hoursArray[i]} : ${this.cookiesEachHourArray[i]} Cookies`;
       ulEl.appendChild(liEl);
     }
     liEl = document.createElement('li');
@@ -51,7 +51,7 @@ var seattleShop = {
 };
 
 function getRandom(min, max) {
-  return Math.floor(Math.random() * (max - min +1)) + min;
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 seattleShop.render();
 
