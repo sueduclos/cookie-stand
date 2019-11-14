@@ -7,14 +7,21 @@ var hoursArray = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2p
 
 //container to put my lists
 var storeSales = document.getElementById('stores');
-var seattleShop = {
-  storeName: 'Seattle HQ',
-  minCustomersEachHour: 23,
-  maxCustomersEachHour: 65,
-  averageCookiesPerCustomer: 6.3,
-  customersEachHourArray:[],
-  cookiesEachHourArray:[],
-  totalCookiesForTheDay: 0,
+function cookieStore(storeName, minCustomersEachHour, maxCustomersEachHour, averageCookiesPerCustomer) {
+
+  this.storeName = storeName;
+  this.minCustomersEachHour = minCustomersEachHour;
+  this.maxCustomersEachHour = maxCustomersEachHour;
+  this.averageCookiesPerCustomer = averageCookiesPerCustomer;
+  this.customersEachHourArray = [];
+  this.cookiesEachHourArray = [];
+  this.totalCookiesForTheDay = 0;
+}
+var seattleShop = new cookieStore('Seattle HQ', 23, 65, 6.3);
+var tokyoShop = new cookieStore('Tokyo PSC', 3, 24, 1.2);
+var dubaiShop = new cookieStore('Dubai PSC', 11, 38, 3.7);
+var parisShop = new cookieStore('Paris PSC', 20, 38, 2.3);
+var limaShop = new cookieStore('Lima PSC', 2, 16, 4.6);
 
   calculateCustomers: function() {
     for (var i = 0; i < hoursArray.length; i++) {
