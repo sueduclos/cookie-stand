@@ -7,8 +7,7 @@ var hoursArray = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2p
 
 //container to put my lists
 var storeSales = document.getElementById('stores');
-function cookieStore(storeName, minCustomersEachHour, maxCustomersEachHour, averageCookiesPerCustomer) {
-
+function CookieStore(storeName, minCustomersEachHour, maxCustomersEachHour, averageCookiesPerCustomer) {
   this.storeName = storeName;
   this.minCustomersEachHour = minCustomersEachHour;
   this.maxCustomersEachHour = maxCustomersEachHour;
@@ -17,18 +16,18 @@ function cookieStore(storeName, minCustomersEachHour, maxCustomersEachHour, aver
   this.cookiesEachHourArray = [];
   this.totalCookiesForTheDay = 0;
 }
-var seattleShop = new cookieStore('Seattle HQ', 23, 65, 6.3);
-var tokyoShop = new cookieStore('Tokyo PSC', 3, 24, 1.2);
-var dubaiShop = new cookieStore('Dubai PSC', 11, 38, 3.7);
-var parisShop = new cookieStore('Paris PSC', 20, 38, 2.3);
-var limaShop = new cookieStore('Lima PSC', 2, 16, 4.6);
+var seattleShop = new CookieStore('Seattle HQ', 23, 65, 6.3);
+var tokyoShop = new CookieStore('Tokyo PSC', 3, 24, 1.2);
+var dubaiShop = new CookieStore('Dubai PSC', 11, 38, 3.7);
+var parisShop = new CookieStore('Paris PSC', 20, 38, 2.3);
+var limaShop = new CookieStore('Lima PSC', 2, 16, 4.6);
 
-  calculateCustomers: function() {
+CookieStore.prototype.calculateCustomers = function() {
     for (var i = 0; i < hoursArray.length; i++) {
       var randomCustomer = getRandom(this.minCustomersEachHour, this.maxCustomersEachHour);
       this.customersEachHourArray.push(randomCustomer);
     }
-  },
+  }
 
   calculateCookies: function() {
     for (var i = 0; i < this.customersEachHourArray.length; i++) {
@@ -91,9 +90,9 @@ var tokyoShop = {
     var ulEl = document.createElement('ul');
     var h2El = document.createElement('h2');
     h2El.textContent = this.storeName;
-    console.log('h2El: ', h2El);
+    // console.log('h2El: ', h2El);
     storeSales.appendChild(h2El);
-    console.log(storeSales);
+    // console.log(storeSales);
     for (var i = 0; i < hoursArray.length; i++ ) {
       var liEl = document.createElement('li');
       liEl.textContent = `${hoursArray[i]} : ${this.cookiesEachHourArray[i]} Cookies`;
