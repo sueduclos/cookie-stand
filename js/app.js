@@ -1,9 +1,12 @@
 'use strict';
+var list = document.getElementById('storeTable');
 
 //console.log('proof of life');
 //number of cookies at each store at each hour plus totals
 
 var hoursArray = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
+
+var stores = [];
 
 //container to put my lists
 var storeSales = document.getElementById('stores');
@@ -15,6 +18,7 @@ function CookieStore(storeName, minCustomersEachHour, maxCustomersEachHour, aver
   this.customersEachHourArray = [];
   this.cookiesEachHourArray = [];
   this.totalCookiesForTheDay = 0;
+  stores.push(this);
 }
 var seattleShop = new CookieStore('Seattle HQ', 23, 65, 6.3);
 var tokyoShop = new CookieStore('Tokyo PSC', 3, 24, 1.2);
@@ -67,8 +71,64 @@ dubaiShop.render();
 parisShop.render();
 limaShop.render();
 
-var renderHeader = function() {
-  
+
+function makeHeader() {
+  var trEl = document.createElement('tr');
+  var thEl = document.createElement('th');
+  thEl.textContent = 'Location';
+  trEl.appendChild(thEl);
+
+  for(var i = 0; i < hoursArray.length; i++) {
+    var thEl = document.createElement('th');
+    thEl.textContent = hoursArray[i];
+    trEl.appendChild(thEl);
+  }
+  var thElem = document.createElement('th');
+  thElem.textContent = 'Total';
+  trEl.appendChild(thElem);
+  list.appendChild(trEl);
+
 }
+
+makeHeader();
+
+// var makeShopData = function() {
+//   var trEl = document.createElement('tr');
+//   var thEl = document.createElement('th');
+//   thEl.textContent = this.storeName;
+//   trEl.appendChild(thEl);
+
+//   for(var i = 0; i < this.hoursArray.length; i++) {
+//     var tdEl = document.createElement('td');
+//     tdEl.textContent = this.cookiesEachHourArray[i];
+//     trEl.appendChild(tdEl);
+//   }
+//   var tdElem = document.createElement('td');
+//   tdElem.textContent = this.totalCookiesForTheDay('td');
+//   trEl.appendChild(tdElem);
+//   CookieStore.tableDataEl.appendChild(trEl);
+
+// };
+
+// makeShopData();
+
+// var makeFooter = function() {
+//   var trEl = document.createElement('tr');
+//   var tdEl = document.createElement('td');
+//   tdEl.textContent = 'Hour Totals: ';
+//   trEl.appendChild(tdEl);
+
+//   for(var i =0; i < CookieStore.hoursArray.length; i++) {
+//     var storesHourlyTotals = 0;
+//     var tdEl = document.createElement('td');
+//     for (var j = 0; j < CookieStore.allStores.length; j++) {
+//       storesHourlyTotals += CookieStore
+//     }
+
+//   }
+
+// };
+
+// makeFooter();
 
 
