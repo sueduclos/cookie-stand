@@ -97,7 +97,7 @@ CookieStore.prototype.makeShopData = function() {
 
   for(var i = 0; i < this.hoursArray.length; i++) {
     tdEl = document.createElement('td');
-    tdEl.textContent = hoursArray[i];
+    tdEl.textContent = this.cookiesEachHourArray[i];
     trEl.appendChild(tdEl);
   }
   var tdElem = document.createElement('td');
@@ -106,6 +106,9 @@ CookieStore.prototype.makeShopData = function() {
   storeTableEl.appendChild(trEl);
 
 };
+for(var i = 0; i < stores.length; i++) {
+  stores[i].makeShopData();
+}
 
 new CookieStore('Seattle HQ', 23, 65, 6.3);
 new CookieStore('Tokyo PSC', 3, 24, 1.2);
