@@ -23,6 +23,7 @@ function CookieStore(storeName, minCustomersEachHour, maxCustomersEachHour, aver
   this.totalCookiesForTheDay = 0;
   this.calculateCustomers();
   this.calculateCookies();
+  this.makeShopData();
   this.render();
   stores.push(this);
 }
@@ -50,6 +51,28 @@ CookieStore.prototype.render = function() {
   storeTableEl.appendChild(trEl);
 };
 
+CookieStore.prototype.makeShopData = function() {
+  // creates the store name column
+  var trEl = document.createElement('tr');
+  var tdEl = document.createElement('td');
+  tdEl.textContent = this.storeName;
+  trEl.appendChild(tdEl);
+
+  // creates the data for a certain store at a certain time
+  for(var i = 0; i < hoursArray.length; i++) {
+    var tdElement = document.createElement('td');
+    // console.log("cookie hour", this.cookiesEachHourArray);
+    tdElement.textContent = this.cookiesEachHourArray[i];
+    // console.log("rando", this.cookiesEachHourArray);
+    trEl.appendChild(tdElement);
+  }
+  var tdElem = document.createElement('td');
+  tdElem.textContent = this.totalCookiesForTheDay;
+  trEl.appendChild(tdElem);
+  storeTableEl.appendChild(trEl);
+
+};
+
 function getRandom(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
@@ -66,7 +89,7 @@ function makeHeader() {
     trEl.appendChild(thEl);
   }
   var thElem = document.createElement('th');
-  thElem.textContent = 'Total';
+  thElem.textContent = 'Daily Location Total';
   trEl.appendChild(thElem);
   storeTableEl.appendChild(trEl);
 
@@ -74,26 +97,6 @@ function makeHeader() {
 
 makeHeader();
 
-CookieStore.prototype.makeShopData = function() {
-  var trEl = document.createElement('tr');
-  var tdEl = document.createElement('td');
-  tdEl.textContent = this.storeName;
-  trEl.appendChild(tdEl);
-
-  for(var i = 0; i < this.hoursArray.length; i++) {
-    tdEl = document.createElement('td');
-    tdEl.textContent = this.cookiesEachHourArray[i];
-    trEl.appendChild(tdEl);
-  }
-  var tdElem = document.createElement('td');
-  tdElem.textContent = this.totalCookiesForTheDay('td');
-  trEl.appendChild(tdElem);
-  storeTableEl.appendChild(trEl);
-
-};
-for(var i = 0; i < stores.length; i++) {
-  stores[i].makeShopData();
-}
 
 new CookieStore('Seattle HQ', 23, 65, 6.3);
 new CookieStore('Tokyo PSC', 3, 24, 1.2);
