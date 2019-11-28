@@ -24,7 +24,6 @@ function CookieStore(storeName, minCustomersEachHour, maxCustomersEachHour, aver
   this.calculateCustomers();
   this.calculateCookies();
   this.makeShopData();
-  this.render();
   stores.push(this);
 }
 
@@ -43,13 +42,13 @@ CookieStore.prototype.calculateCookies = function() {
   }
 };
 /////////////////////////RENDER A SHOP ROW/////////////////////////////
-CookieStore.prototype.render = function() {
-  var trEl = document.createElement('tr');
-  var tdEl = document.createElement('td');
-  tdEl.textContent = this.storeName;
-  trEl.appendChild(tdEl);
-  storeTableEl.appendChild(trEl);
-};
+// CookieStore.prototype.render = function() {
+//   var trEl = document.createElement('tr');
+//   var tdEl = document.createElement('td');
+//   tdEl.textContent = this.storeName;
+//   trEl.appendChild(tdEl);
+//   storeTableEl.appendChild(trEl);
+// };
 
 CookieStore.prototype.makeShopData = function() {
   // creates the store name column
