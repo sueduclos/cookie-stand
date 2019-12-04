@@ -118,7 +118,6 @@ function makeFooter() {
   storeTableEl.appendChild(trEl);
 }
 
-
 new CookieStore('Seattle HQ', 23, 65, 6.3);
 new CookieStore('Tokyo PSC', 3, 24, 1.2);
 new CookieStore('Dubai PSC', 11, 38, 3.7);
@@ -126,3 +125,19 @@ new CookieStore('Paris PSC', 20, 38, 2.3);
 new CookieStore('Lima PSC', 2, 16, 4.6);
 
 makeFooter();
+
+// <--Forms-->
+var userForm = document.getElementById('userForm');
+userForm.addEventListener('submit', handleSubmit);
+
+function handleSubmit(event) {
+  event.preventDefault();
+  var newStoreName = event.target.inputStoreName.value;
+  var newStoreMinCust = event.target.inputMinCustomer.value;
+  var newStoreMaxCust = event.target.inputMaxCustomer.value;
+  var newStoreAvgCookies = event.target.inputAvgCookies.value;
+
+}
+//make a store
+//run calculations you need 
+//append table to that info
