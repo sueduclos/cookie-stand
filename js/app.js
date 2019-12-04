@@ -96,9 +96,33 @@ function makeHeader() {
 
 makeHeader();
 
+function makeFooter() {
+  var trEl = document.createElement('tr');
+  var tdEl = document.createElement('td');
+  tdEl.textContent = 'Total';
+  trEl.appendChild(tdEl);
+  var totalTotal = 0;
+  for(var i = 0; i < hoursArray.length; i++) {
+    tdEl = document.createElement('td');
+    var hourlyTotal = 0;
+    for(var j = 0; j < stores.length; j++) {
+      hourlyTotal += stores[j].cookiesEachHourArray[i];
+    }
+    tdEl.textContent = hourlyTotal;
+    totalTotal += hourlyTotal;
+    trEl.appendChild(tdEl);
+  }
+  tdEl = document.createElement('td');
+  tdEl.textContent = totalTotal;
+  trEl.appendChild(tdEl);
+  storeTableEl.appendChild(trEl);
+}
+
 
 new CookieStore('Seattle HQ', 23, 65, 6.3);
 new CookieStore('Tokyo PSC', 3, 24, 1.2);
 new CookieStore('Dubai PSC', 11, 38, 3.7);
 new CookieStore('Paris PSC', 20, 38, 2.3);
 new CookieStore('Lima PSC', 2, 16, 4.6);
+
+makeFooter();
