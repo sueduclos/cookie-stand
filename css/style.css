@@ -9,3 +9,8 @@ h1 {
   font-family: 'Courier New', Courier, monospace;
   font-size: 100px;
 }
+
+img {
+  width: 300px;
+  height: 300px;
+}
